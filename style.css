@@ -1,0 +1,16 @@
+body{
+    background-image: url(./bg.jpg);
+    background-size:cover
+}
+h1{
+    text-align: center;
+    background-image: linear-gradient(to right top, #24abec, #00b9de, #00c2b6, #2dc47e, #8ec045, #bbb42e, #e1a431, #ff914a, #ff8167, #ff7686, #ff73a5, #ed78c2);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+.mainContainer{
+    color: white;
+}

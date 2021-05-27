@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <h1>Wanna know how the weather is in any city ?? </h1>
+        <h2>Enter the name of a city here :<input type="text"> and press ↵ </h2>
+    <div class="mainContainer">
+        
+    </div>
+
+    <script>
+        const div = document.querySelector('.mainContainer')
+        const inputCity = document.querySelector('input')
+        const convert = (farenheit) => {
+            return Math.floor(farenheit - 273,15);
+        }
+
+        const weather = (inputCity) => {
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=96b6e5976c846f9ac2a655700c95c474`)
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data)
+            div.insertAdjacentHTML('beforeend', `What can I say about the weather in ${inputCity} ... ? <br> Maybe ${data.weather[0].description} ? <br> 
+            Min temperatures : ${convert(data.main.temp_min)}°C <br>
+            Max temperatures : ${convert(data.main.temp_max)}°C <br>`)
+            })
+        }
+
+        inputCity.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                weather(inputCity.value);
+                inputCity.value =""
+            }
+        })
+    </script>
+</body>
+</html>
